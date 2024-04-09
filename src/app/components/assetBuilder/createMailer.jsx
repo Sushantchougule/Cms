@@ -7,12 +7,13 @@ import { LpmMailerPreview } from './previews/LPM/LpmMailerPreview';
 import { JbwMailerPreview } from './previews/JBW/JbwMailerPreview';
 import { Button } from 'react-bootstrap';
 import { useClearData } from '@/app/hooks/useClearData';
-
+import { useCreateUrl } from "@/app/hooks/useCreateUrl";
+import { mailerContentTemplate } from '@/app/data/mailerContentTemplate';
 export const CreateMailer = ({ nextTab, clear }) => {
     const clearData=useClearData()
     const [url, setUrl] = useState("")
     const [title, setTitle] = useState("")
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState(mailerContentTemplate);
     const [banner, setBanner] = useState("");
     const [bannerUrl, setBannerUrl] = useState("");
     const [bannerPreview, setBannerPreview] = useState("")
@@ -31,6 +32,12 @@ export const CreateMailer = ({ nextTab, clear }) => {
     const [showJbwMailer, setShowJbwMailer] = useState(false)
     const [showLpmMailer, setShowLpmMailer] = useState(false)
     const [alert, setAlert] = useState(false)
+    const tempUrl=useCreateUrl({ type: 'mailer', title: title })
+
+
+    useEffect(()=>(
+        setUrl(tempUrl)
+    ),[title])
 
     
     const scrollToTop = () => {
@@ -193,8 +200,6 @@ export const CreateMailer = ({ nextTab, clear }) => {
                                 <button className="btn btn-danger" disabled={previewDisabled} onClick={handleClear}>ClearData</button>
 
                             </div>
-
-
                         </div>
 
                     </div>
@@ -320,7 +325,6 @@ export const CreateMailer = ({ nextTab, clear }) => {
                                 <input type="text" className="form-control" value={updateProfile} onChange={((e) => setUpdateProfile(e.target.value))} required />
                             </div>
                         </div>
-
 
                         <div className="d-flex">
                             <div >

@@ -203,6 +203,7 @@ model landingpage{
   logoHeight String   @default("imageHeight")
   logoWidth String     @default("imageWidth")
   template String   @default("JBW")
+  optin String @default("optin")
 }
 
 

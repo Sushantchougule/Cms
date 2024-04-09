@@ -42,7 +42,12 @@ export const UploadAsset = () => {
       imageHeight: mailer.imageHeight,
       logoSrc: landingPage.imageUrl,
       logoHeight: landingPage.imageHeight,
-      logoWidth: landingPage.imageWidth
+      logoWidth: landingPage.imageWidth,
+      template: mailer.template,
+      unsubscribe: mailer.unsubscribe,
+      privacy: mailer.privacyLink,
+      updateProfile: mailer.updateProfile,
+      footer: mailer.footer,
     }
     setMailerData(temp)
   }
@@ -57,7 +62,11 @@ export const UploadAsset = () => {
       content: landingPage.content,
       logoSrc: landingPage.imageUrl,
       logoHeight: landingPage.imageHeight,
-      logoWidth: landingPage.imageWidth
+      logoWidth: landingPage.imageWidth,
+      template: landingPage.template,
+      headerBackgroundColor:landingPage.headerBackgroundColor,
+      optin:landingPage.optin,
+
     }
     setLandingPageData(temp)
   }
@@ -71,7 +80,9 @@ export const UploadAsset = () => {
       imageWidth: downloadPage.imageWidth,
       logoSrc: landingPage.imageUrl,
       logoHeight: landingPage.imageHeight,
-      logoWidth: landingPage.imageWidth
+      logoWidth: landingPage.imageWidth,
+      link: downloadPage.link,
+      pdfSrc: downloadPage.pdfSrc
     }
     setDownloadPageData(temp)
   }
@@ -110,7 +121,7 @@ export const UploadAsset = () => {
           name: campaign.name,
           code: campaign.code,
         }
-        const uploadCampaignResponse = await uploadFunction(temp, 'campaign')
+        const uploadCampaignResponse = await postData(temp, 'campaign')
       }
     }
     catch (e) {
@@ -213,7 +224,7 @@ export const UploadAsset = () => {
               Upload Asset(Download Page,Landing Page,Mailer)
             </div>
             <div className='col-md-2'>
-               <button className="btn btn-primary" style={{width:'140px'}} onClick={uploadAll}>Upload</button>
+              <button className="btn btn-primary" style={{ width: '140px' }} onClick={uploadAll}>Upload</button>
             </div>
           </div>
         </div>

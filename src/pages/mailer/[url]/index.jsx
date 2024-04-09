@@ -1,28 +1,30 @@
 import Link from "next/link";
-
-
-
+import { LpmMailerTemplate } from "@/app/components/assetBuilder/templates/mailer/LPM/template_1";
 const fetcher = (url) => fetch(url).then((res) => res.json());
-export default function LandingPage({ data, error }){
-    if (!data) return <div className='container text-center'>Loading...</div>;
-    console.log(data)
-    return (
-           <div>
-            {data.title}
+import Head from 'next/head';
+export default function Mailer({ data, error }) {
 
-            <Link href={`/lp/${data.landingpageurl}`} passHref style={{ textDecoration: "none", color: 'black' }}>
-               Landing Page
-            </Link>
-           </div>
+    if (!data) return <div className='container text-center'>Loading...</div>;
+    if (error) return <div className="container">Error loading data</div>
+
+    return (
+        <>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <LpmMailerTemplate temp={data} />
+        </>
 
     )
 }
 
 export async function getServerSideProps(context) {
     try {
-        const { url } = context.query; 
+        const { url } = context.query;
+        console.log(url)
         const apiUrl = `http://localhost:5000/api/mailer/${url}`;
         const data = await fetcher(apiUrl);
+        console.log('request', data)
         return {
             props: { data },
         };

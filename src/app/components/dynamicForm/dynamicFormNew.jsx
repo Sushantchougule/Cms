@@ -28,6 +28,7 @@ export const DynamicFormNew = ({ data, landingpageurl, downloadpageurl, optin,bu
                 },
                 body: JSON.stringify(formValues),
             });
+            console.log(response)
             if (response.status == 200) {
                 router.push(`/dp/${downloadpageurl}`);
                 setFormValues({});

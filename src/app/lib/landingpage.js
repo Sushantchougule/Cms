@@ -27,7 +27,7 @@ export const addLandingPageData = async (url, data) => {
     const landingpage = await prisma.landingpage.findFirst({
       where: { url: url },
       include: {
-        asset: true
+        campaign: true
       }
     });
 

@@ -80,24 +80,24 @@ export const Main = () => {
                         onSelect={(k) => setKey(k)}
                         className="mb-3 justify-content-center"
                     >
-                        <Tab eventKey="campaign" title={<span>Campaign<BsArrowRight className='ms-1' /></span>} >
+                        <Tab eventKey="campaign" title={<span>Campaign<BsArrowRight className='ms-1' /></span>}  >
                             <CreateCampaign nextTab={next} clear={cleared} suppressHydrationWarning />
                         </Tab>
 
-                        <Tab eventKey="downloadpage" title={<span>Download Page<BsArrowRight className='ms-1' /></span>}   suppressHydrationWarning>
+                        <Tab eventKey="downloadpage" title={<span>Download Page<BsArrowRight className='ms-1' /></span>} disabled={downloadDisabled}  suppressHydrationWarning>
                             <CreateDownloadPage nextTab={next} clear={cleared} />
                         </Tab>
 
-                        <Tab eventKey="landingpage" title={<span>Landing Page<BsArrowRight className='ms-1' /></span>}  suppressHydrationWarning >
+                        <Tab eventKey="landingpage" title={<span>Landing Page<BsArrowRight className='ms-1' /></span>} disabled={landingPageDisabled}  suppressHydrationWarning >
                             <CreateLandingPage  nextTab={next} clear={cleared}/>
                         </Tab>
 
 
-                        <Tab eventKey="mailer" title={<span>Mailer<BsArrowRight className='ms-1' /></span>}   suppressHydrationWarning >
+                        <Tab eventKey="mailer" title={<span>Mailer<BsArrowRight className='ms-1' /></span>} disabled={mailerDisabled}  suppressHydrationWarning >
                             <CreateMailer   nextTab={next} clear={cleared}/>
                         </Tab>
 
-                        <Tab eventKey="upload"  title={<span>Upload<BsArrowUp className='ms-1'  /></span>}  suppressHydrationWarning >
+                        <Tab eventKey="upload"  title={<span>Upload<BsArrowUp className='ms-1'  /></span>} disabled={uploadDisabled} suppressHydrationWarning >
                             <UploadAsset />
                         </Tab>
                     </Tabs>

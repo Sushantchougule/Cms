@@ -1,26 +1,16 @@
 import Link from "next/link";
-
+import Head from 'next/head';
 const fetcher = (url) => fetch(url).then((res) => res.json());
+import { DownloadPageTemplate_1 } from "@/app/components/assetBuilder/templates/downloadpage/template_1";
 export default function DownloadPage({ data, error }) {
     if (!data) return <div className='container text-center'>Loading...</div>;
     return (
-        <div className=''>
-            <div className="row justify-content-center mt-4 mb-5">
-                <div className="col">
-                    <div className=''>
-
-
-                        <center><img src={`/campaign/downloadbanners/${data.imageUrl}`} style={{ maxWidth: '100%', marginTop: '10px', width: `${data.imageWidth}`, height: `${data.imageHeight}` }} /></center>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-
-
- 
+        <>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <DownloadPageTemplate_1 temp={data} />
+        </>
     )
 }
 

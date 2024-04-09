@@ -6,6 +6,7 @@ export const GET = async (req,{params}) => {
     try{
         const url=params.url
         const mailer=await getMailer(url)
+        console.log(mailer)
         return NextResponse.json(mailer,{status:200})
     }
     catch(error){

@@ -6,6 +6,10 @@ import { useRecoilState } from "recoil";
 import { LandingPreview } from "./previews/landingPagePreview";
 import { LpmLandingPreview } from "./previews/LPM/LpmLandingPreview";
 import { Button } from 'react-bootstrap';
+import { useCreateUrl } from "@/app/hooks/useCreateUrl";
+import { formDataTemplateString } from "@/app/data/formDataTemplate";
+import { contentTemplate } from "@/app/data/landingPageContentTemplate";
+import { optinTemplate } from "@/app/data/optinTemplate";
 
 export default function CreateLandingPage({ nextTab, clear }) {
     const [url, setUrl] = useState("")
@@ -14,10 +18,10 @@ export default function CreateLandingPage({ nextTab, clear }) {
     const [headerLogoFile, setHeaderLogoFile] = useState(null);
     const [headerBackgroundColor, setHeaderBackgroundColor] = useState("")
     const [logoPreview, setLogoPreview] = useState("")
-    const [formdata, setFormData] = useState("")
+    const [formdata, setFormData] = useState(formDataTemplateString)
     const [privacy, setPrivacy] = useState("")
-    const [optin, setOptin] = useState("")
-    const [content, setContent] = useState("")
+    const [optin, setOptin] = useState(optinTemplate)
+    const [content, setContent] = useState(contentTemplate)
     const [landingpage, setLandingPage] = useRecoilState(landingPageState)
     const [imageHeight, setImageHeight] = useState('auto')
     const [imageWidth, setImageWidth] = useState('auto')
@@ -26,8 +30,12 @@ export default function CreateLandingPage({ nextTab, clear }) {
     const [showLpmLandingPreview, setShowLpmLandingPreview] = useState(false)
     const [selectedTemplate, setSelectedTemplate] = useState("")
     const [alert, setAlert] = useState(false)
+    const tempUrl=useCreateUrl({ type: 'landingpage', title: title })
+    
 
-
+    useEffect(()=>(
+        setUrl(tempUrl)
+    ),[title])
     const scrollToTop=()=>{
         window.scrollTo({
             top: 0,

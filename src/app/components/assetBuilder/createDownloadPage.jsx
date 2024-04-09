@@ -3,8 +3,10 @@ import { downloadPageState } from '@/app/atoms/downloadpage';
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil'
 import { DownloadPreview } from './previews/downloadPagePreview';
+import { useCreateUrl } from '@/app/hooks/useCreateUrl';
 
 export const CreateDownloadPage = ({ nextTab, clear }) => {
+  
   const [download, setDownload] = useRecoilState(downloadPageState)
   const [title, setTitle] = useState("");
   const [bannerSrc, setBannerSrc] = useState("");
@@ -18,7 +20,11 @@ export const CreateDownloadPage = ({ nextTab, clear }) => {
   const [url, setUrl] = useState("")
   const [showDownloadPreview, setShowDownloadPreview] = useState(false)
   const [previewDisabled, setPreviewDisabled] = useState(true)
+  const tempUrl=useCreateUrl({ type: 'downloadpage', title: title })
 
+  useEffect(()=>(
+    setUrl(tempUrl)
+  ),[title])
   const closeModal = () => {
     setShowDownloadPreview(false)
   }

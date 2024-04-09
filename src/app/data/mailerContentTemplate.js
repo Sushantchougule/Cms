@@ -1,0 +1,1 @@
+export const mailerContentTemplate= "<p style=\"font-family: 'Lato', sans-serif; font-size: 12px; color: #343434; line-height: 18px; text-align: justify; padding-right: 10px;\"></p>";

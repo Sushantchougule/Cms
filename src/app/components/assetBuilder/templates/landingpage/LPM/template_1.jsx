@@ -12,12 +12,7 @@ export const LpmLandingPageTemplate_1 = ({ temp }) => {
     }, [data.headerBackgroundColor])
     return (
         <>
-            <div className="d-flex flex-column" style={{ minHeight: "100vh", backgroundColor: '#ffffff', boxShadow: '' }}>
-                <div style={{ backgroundColor: '#ffffff' }} className='sticky-top'>
-                    <div className='container'>
-                        <Navigation />
-                    </div>
-                </div>
+            <div className="d-flex flex-column" style={{ minHeight: "100vh", backgroundColor: '#ffffff', boxShadow: '' }}> 
                 <main className="flex-grow-1" style={{ backgroundColor: '#f3f4f6' }}>
                     <div className="row justify-content-center mt-5 mb-5">
                         <div className="col-md-10">
@@ -88,10 +83,13 @@ export const LpmLandingPageTemplate_1 = ({ temp }) => {
                         </div>
                     </div>
                 </main>
-                <Newfooter />
+              
             </div>
 
         </>
     );
 }
+
+
+
 
